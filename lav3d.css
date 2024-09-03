@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(11, 11, 11);
+}
+
+.card {
+    width: 300px;
+    height: 455px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 36px;
+    perspective: 1000px;
+    cursor: pointer;
+    border-radius: 30px;
+
+
+}
+
+.wra {
+    position: absolute;
+    width: 100%;
+
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: 0;
+    box-shadow: rgba(225, 225, 225, 1) 0px 14px 28px, rgba(225, 225, 225, 1) 0px 10px 10px;
+    background-color: #4a4a4a;
+    transition: transform 0.5s;
+}
+
+.c-i {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.cl {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    filter: drop-shadow(2px 2px 4px #000);
+    z-index: 1;
+}
+
+.card:hover .wra {
+    transform: rotateX(5deg) translateZ(10px);
+    box-shadow: rgba(225, 225, 225, 0.6) 0px 35px 50px, rgba(225, 225, 225, 0.3) 0px 10px 20px;
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(225, 225, 225, 1);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(225, 225, 225, 1);
+}
+
+.card:hover .cl {
+    opacity: 1;
+    transform: translateZ(10px);
+    filter: none;
+
+}
+
+.wra img {
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(225, 225, 225, 1) 0px 14px 28px, rgba(225, 225, 225, 1) 0px 10px 10px;
+}
+
+.wra::before,
+.wra::after {
+    content: "";
+    opacity: 0;
+    height: 80px;
+    transition: all 0.5s;
+    border-radius: 30px;
+    position: absolute;
+    left: 0;
+    box-shadow: rgba(225, 225, 225, 1) 0px 14px 28px, rgba(225, 225, 225, 1) 0px 10px 10px;
+}
+
+.wra::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(to top, transparent 46%, rgba(225, 225, 225, 1) 68%, rgb(255, 255, 255) 97%);
+}
+
+.wra::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(to bottom, transparent 46%, rgba(255, 255, 255, 1) 68%, rgb(255, 255, 255) 97%);
+}
+
+.card:hover .wra::before,
+.wra::after {
+    opacity: 1;
+}
+
+.card:hover .wra::after {
+    height: 120px;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 20px;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    background-color: white;
+    color: #000;
+}
